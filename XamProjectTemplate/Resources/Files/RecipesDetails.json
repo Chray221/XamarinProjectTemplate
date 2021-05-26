@@ -1,0 +1,132 @@
+﻿{
+  "recipe": {
+    "id": 1,
+    "name": "Homemade Shoyu Ramen",
+    "image": "https://i.imgur.com/NgJCZiQ.png",
+    "images": [
+      "https://i.imgur.com/NgJCZiQ.png",
+      "https://i.imgur.com/GsTMPmy.gif",
+      "https://i.imgur.com/W8sjE2u.jpg",
+      "https://i.imgur.com/QIHQCJ3.png"
+    ],
+      "preparation_time": "30min",
+      "serving_size" : 4,
+      "best_serve_on" : "dinner",
+    "ingredients": [
+      {
+        "id": 4,
+        "name": "Fresh Oranges",
+        "image": "https://i.imgur.com/NgJCZiQ.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity": 2,
+        "is_discounted": false,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 5,
+        "name": "Fruity Combo",
+        "image": "https://i.imgur.com/d0fwnfH.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity": 2,
+        "is_discounted": false,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 6,
+        "name": "Banana",
+        "image": "https://i.imgur.com/Hrk1fsy.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity":  3,
+        "is_discounted": false,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 7,
+        "name": "Grapes",
+        "image": "https://i.imgur.com/BV0H2Yg.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 54.00,
+        "quantity": 1,
+        "is_discounted": true,
+        "stock_status": "8 Left"
+      },
+      {
+        "id": 8,
+        "name": "Pineapples",
+        "image": "https://i.imgur.com/FQISDZ6.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity": 6,
+        "is_discounted": false,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 9,
+        "name": "Tomatoes",
+        "image": "https://i.imgur.com/29X6YgE.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity": 5,
+        "is_discounted": false,
+        "stock_status": "No Stocks"
+      },
+      {
+        "id": 10,
+        "name": "Carrots",
+        "image": "https://i.imgur.com/GRHIV41.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 0.00,
+        "quantity": 8,
+        "is_discounted": false,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 11,
+        "name": "Lettuce",
+        "image": "https://i.imgur.com/X2uQ3VF.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 60.00,
+        "quantity": 9,
+        "is_discounted": true,
+        "stock_status": "In Stock"
+      },
+      {
+        "id": 11,
+        "name": "Lettuce",
+        "image": "https://i.imgur.com/X2uQ3VF.png",
+        "category": "Cooking & Baking",
+        "original_price": 84.00,
+        "discounted_price": 60.00,
+        "quantity": 3,
+        "is_discounted": true,
+        "stock_status": "In Stock"
+      }
+    ],
+      "preparations"
+      :
+      [
+        {
+          "id": 1,
+          "name": "Pork and Stock",
+          "details": "1½ lb. boneless pork shoulder (Boston butt) \nKosher salt and freshly ground black pepper \n2 Tbsp. vegetable oil \n2 lb. chicken necks, backs, and/or wings \n1 lb. pork spareribs \n2 bunches scallions, chopped \n2 carrots, peeled, cut into pieces \n1 head of garlic, halved horizontally \n1 1” piece ginger, peeled, sliced \n¼ cup bonito flakes"
+        },
+        {
+          "id": 2,
+          "name": "Ramen and Garnishes",
+          "details": "1½ lb. boneless pork shoulder (Boston butt) \nKosher salt and freshly ground black pepper \n2 Tbsp. vegetable oil \n2 lb. chicken necks, backs, and/or wings \n1 lb. pork spareribs \n2 bunches scallions, chopped \n2 carrots, peeled, cut into pieces \n1 head of garlic, halved horizontally \n1 1” piece ginger, peeled, sliced \n¼ cup bonito flakes"
+        }
+      ]
+  },
+  "status": 200
+}

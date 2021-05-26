@@ -1,0 +1,52 @@
+﻿{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Shoyu Ramen",
+      "image": "https://i.imgur.com/W8sjE2u.jpg",
+      "preparation_time": "30min",
+      "serving_size": 4
+    },
+    {
+      "id": 2,
+      "name": "Humba",
+      "image": "https://i.imgur.com/4kdNmO5.jpg",
+      "preparation_time": "1Hr",
+      "serving_size": 4
+    },
+    {
+      "id": 3,
+      "name": "Spicy Shoyu Ramen",
+      "image": "https://i.imgur.com/NgJCZiQ.png",
+      "preparation_time": "1Hr",
+      "serving_size": 9
+    },
+    {
+      "id": 4,
+      "name": "Homemade Shoyu Ramen",
+      "image": "https://i.imgur.com/GsTMPmy.gif",
+      "preparation_time": "1Hr",
+      "serving_size": 9
+    },
+    {
+      "id": 5,
+      "name": "Humba Special 1",
+      "image": "https://i.imgur.com/8WTpnsX.jpg",
+      "preparation_time": "1Hr",
+      "serving_size": 4
+    },
+    {
+      "id": 6,
+      "name": "Humba Special 2",
+      "image": "https://i.imgur.com/NgJCZiQ.png",
+      "preparation_time": "1Hr",
+      "serving_size": 4
+    }
+  ],
+  "pagination": {
+    "url": "RecipesListData.json",
+    "has_next": true,
+    "count": 30
+  },
+  "status": 200
+}
