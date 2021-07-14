@@ -38,12 +38,12 @@
                 Background="{local:SolidColorBrush Value=LightCyan}"
                 IsVisible="true"
                 >
-                <!--<Editor.Clip>
+                <Editor.Clip>
                     <RoundRectangleGeometry
                         CornerRadius="{local:ScaleCornerRadius Value=20}"
                         Rect="0,0,150,100">
                     </RoundRectangleGeometry>
-                </Editor.Clip>-->
+                </Editor.Clip>
             </Editor>
         <Frame
             WidthRequest="{local:ScaleWidth Value=150}"
