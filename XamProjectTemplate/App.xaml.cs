@@ -57,12 +57,13 @@ namespace XamProjectTemplate
         //readonly DataClass dataClass = DataClass.GetInstance;
         protected override void OnInitialized()
         {
-            //SetUpScreenSize();
+            SetUpScreenSize();
+            SetupGlobalOptions();
             InitializeComponent();
             //Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
             _NavigationService = NavigationService;
             Xamarin.Forms.Device.SetFlags(new string[] { "Shapes_Experimental", "RadioButton_Experimental", "Brush_Experimental", "SwipeView_Experimental" });
-            //SetupGlobalOptions();
+            
 
             //if (DataClass.GetInstance.IsLoggedIn)
             //    ToHomePage();
@@ -123,7 +124,7 @@ namespace XamProjectTemplate
 
         public static async void Logout()
         {
-            //await DataClass.GetInstance.Logout();
+            await DataClass.GetInstance.Logout();
             ToMainPage();
         }
 

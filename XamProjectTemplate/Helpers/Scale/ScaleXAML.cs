@@ -460,7 +460,7 @@ namespace XamProjectTemplate
         {
             if (!string.IsNullOrEmpty(Value))
             {
-                App.Log($"Original Value Scaling: {this.GetType().ToString()}: {Value}");
+                App.Log($"SCALING_STARTING: Original Value Scaling: {Value}",this.GetType().ToString());
 
                 if (Value.Contains("|"))
                 {
@@ -468,7 +468,7 @@ namespace XamProjectTemplate
                     Value = Device.RuntimePlatform == Device.Android ? paramPlatform[0] : paramPlatform[1];
                 }
 
-                App.Log($"Value Scaling: {this.GetType().ToString()}: {Value}");
+                App.Log($"SCALING_STARTING: Value Scaling: {Value}",this.GetType().ToString());
 
                 ThicknessTypeConverter thicknessTypeConverter = new ThicknessTypeConverter();
                 return IsResponsive ? ((Thickness)thicknessTypeConverter.ConvertFromInvariantString(Value)).ScaleThicknessResponsive() : ((Thickness)thicknessTypeConverter.ConvertFromInvariantString(Value)).ScaleThickness();

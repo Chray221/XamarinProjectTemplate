@@ -114,14 +114,6 @@ namespace XamProjectTemplate
 
         public async Task Logout()
         {
-            //TODO: ADD Cache to Delete
-            //Logout Facebook Account
-            //if (Plugin.FacebookClient.CrossFacebookClient.Current.IsLoggedIn)
-            //    Plugin.FacebookClient.CrossFacebookClient.Current.Logout();
-            //Unsubscribe All Channel in Socket
-            //Faye.Instance.UnsubscribeAll();
-            //Delete Cache Data
-
             Application.Current.Properties.Remove(nameof(BuildNumber));
             Application.Current.Properties.Remove(nameof(Token));
             Application.Current.Properties.Remove(nameof(ClientId));

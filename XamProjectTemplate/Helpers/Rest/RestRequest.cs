@@ -460,6 +460,7 @@ namespace XamProjectTemplate.Rest
             }
         }
 
+        //async Task<bool> ShouldRetryAsync(string title, string content, CancellationToken ct, int wsType)
         async Task<bool> ShouldRetryAsync(string title, string content, CancellationToken ct, int wsType)
         {
             //TODO add LogInErrorPopUp => CustomPopup
@@ -477,7 +478,7 @@ namespace XamProjectTemplate.Rest
             //    }
             //});
 
-            PopupHelper.RemoveLoading();
+            await PopupHelper.RemoveLoadingAsync();
             //var result = await alertPage.Result.Task;
             var result = false;
 
