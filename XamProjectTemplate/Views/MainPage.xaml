@@ -29,7 +29,7 @@
             Padding="{local:ScaleThickness Value='15,5'}"
             HorizontalOptions="Center"/>
             
-            <Editor
+            <!--<Editor
                 Text="Editor Here!....."
                 WidthRequest="{local:ScaleWidth Value=150}"
                 HeightRequest="{local:ScaleHeight Value=100}"
@@ -44,7 +44,7 @@
                         Rect="0,0,150,100">
                     </RoundRectangleGeometry>
                 </Editor.Clip>
-            </Editor>
+            </Editor>-->
         <Frame
             WidthRequest="{local:ScaleWidth Value=150}"
             HeightRequest="{local:ScaleHeight Value=100}"
@@ -62,6 +62,46 @@
                 Background="{local:SolidColorBrush Value=LightCyan}"
                 IsVisible="true"/>
         </Frame>
+        <Slider
+            x:Name="slider"
+            HorizontalOptions="Fill" />
+        <Label >
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span
+                        Text="(5 * 2 + 1) * 15 * "
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text="{Binding Source={Reference slider},Path=Value}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text=" = "
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text="{local:CalcBinding 'asdfg', Source={Reference slider},Path=Value,Calculation='(5 * 2 + 1) * 15 * {0}'}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label >
+            <Label.FormattedText>
+                <FormattedString>                    
+                    <Span
+                        Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='{0}*100'}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text="% from 15-100"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text=" = "
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='({0}*(100-15))+15'}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        
     </StackLayout>
 
 </ContentPage>

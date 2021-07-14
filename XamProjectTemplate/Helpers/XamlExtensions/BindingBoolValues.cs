@@ -6,11 +6,10 @@ using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XamProjectTemplate.Helpers.XamlExtensions
+namespace XamProjectTemplate
 {
     public class BindingBoolValues : IMarkupExtension<BindingBase>
     {
-
         public string Path { get; set; }
         public string StringFormat { get; set; } = null;
         public string Condition { get; set; } = null;
@@ -119,25 +118,35 @@ namespace XamProjectTemplate.Helpers.XamlExtensions
 
         public static T Compute<T>(this string expression, params (string name, object value)[] arguments) =>
             (T)Convert.ChangeType(expression.Transform().GetResult(arguments), typeof(T));
+        public static object Compute(this string expression, Type type, params (string name, object value)[] arguments) =>
+            Convert.ChangeType(expression.Transform().GetResult(arguments), type);
 
         private static object GetResult(this string expression, params (string name, object value)[] arguments)
         {
-            expression = expression.ToDataTableStringValue();
-            foreach (var arg in arguments)
+            try
             {
-                if (arg.value is string)
-                    expression = expression.Replace(arg.name, "'" + arg.value + "'");
-                else
-                    expression = expression.Replace(arg.name, arg.value.ToString());
+                expression = expression.ToDataTableStringValue();
+                foreach (var arg in arguments)
+                {
+                    if (arg.value is string)
+                        expression = expression.Replace(arg.name, "'" + arg.value + "'");
+                    else
+                        expression = expression.Replace(arg.name, arg.value.ToString());
+                }
+
+                expression = expression.Replace("==", "=");
+                App.Log($"(Compute)ExpressionHelper: {expression}");
+                if (resultCache.TryGetValue(expression, out var result))
+                    return result;
+
+                App.Log($"(Compute)ExpressionHelper: {expression}");
+                return resultCache[expression] = dt.Compute(expression, string.Empty);
             }
-
-            expression = expression.Replace("==", "=");
-            App.Log($"(Compute)ExpressionHelper: {expression}");
-            if (resultCache.TryGetValue(expression, out var result))
-                return result;
-
-            App.Log($"(Compute)ExpressionHelper: {expression}");
-            return resultCache[expression] = dt.Compute(expression, string.Empty);
+            catch(Exception ex)
+            {
+                App.LogException(ex);
+            }
+            return "Task Cannot Performed";
         }
 
         private static string Transform(this string expression)
@@ -145,10 +154,10 @@ namespace XamProjectTemplate.Helpers.XamlExtensions
             if (expressionCache.TryGetValue(expression, out var result))
                 return result;
 
-            App.Log("(Transform)ExpressionHelper: {v}");
+            App.Log($"(Transform)ExpressionHelper: {expression}");
             result = expression;
-            foreach (var t in tokens)
-                result = result.Replace(t.old, t.@new);
+            foreach (var (old, @new) in tokens)
+                result = result.Replace(old, @new);
 
             return expressionCache[expression] = result;
         }
@@ -157,7 +166,7 @@ namespace XamProjectTemplate.Helpers.XamlExtensions
         {
             if (!string.IsNullOrEmpty(expression))
             {
-                string matching = "";
+                string matching = expression;
                 string patern = "[a-zA-Z]+";
 
                 MatchCollection matches = Regex.Matches(expression, patern);
@@ -172,5 +181,5 @@ namespace XamProjectTemplate.Helpers.XamlExtensions
         }
     }
 }
-}
+
 
