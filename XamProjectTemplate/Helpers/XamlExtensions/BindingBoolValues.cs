@@ -128,7 +128,7 @@ namespace XamProjectTemplate
                 expression = expression.ToDataTableStringValue();
                 foreach (var arg in arguments)
                 {
-                    if (arg.value is string)
+                    if (arg.value is string argValueString && !Regex.IsMatch(argValueString, "(?:\\d[\\+\\-*\\/]\\d)"))
                         expression = expression.Replace(arg.name, "'" + arg.value + "'");
                     else
                         expression = expression.Replace(arg.name, arg.value.ToString());

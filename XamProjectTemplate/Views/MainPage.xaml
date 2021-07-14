@@ -54,7 +54,8 @@
             Padding="0"
             Background="{local:SolidColorBrush Value=Gainsboro}">
             <Editor
-                Text="Editor Here!....."
+                x:Name="editor"
+                Text="1+1"
                 WidthRequest="{local:ScaleWidth Value=150}"
                 HeightRequest="{local:ScaleHeight Value=100}"
                 HorizontalOptions="Center"
@@ -97,6 +98,22 @@
                         FontSize="{local:ScaleFontSize Value=19}"/>
                     <Span
                         Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='({0}*(100-15))+15'}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label >
+            <Label.FormattedText>
+                <FormattedString>                    
+                    <Span
+                        Text="{Binding Source={Reference editor},Path=Text}"
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text=" = "
+                        FontSize="{local:ScaleFontSize Value=19}"/>
+                    <Span
+                        Text="{local:CalcBinding Source={Reference editor},Path=Text,Calculation='{0}'}"
                         FontSize="{local:ScaleFontSize Value=19}"/>
                 </FormattedString>
             </Label.FormattedText>
