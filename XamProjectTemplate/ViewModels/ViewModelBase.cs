@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -51,21 +52,6 @@ namespace XamProjectTemplate.ViewModels
 
         }
 
-        public virtual void OnNavigatingTo(INavigationParameters parameters)
-        {
-
-        }
-
-        public virtual void OnAppearing()
-        {
-
-        }
-
-        public virtual void OnDisappearing()
-        {
-
-        }
-
         public virtual void Destroy()
         {
 
@@ -82,13 +68,53 @@ namespace XamProjectTemplate.ViewModels
             {
                 IsClicked = true;
                 App.Log($"Navigate To: {page.Name}");
-                var result = await NavigationService?.NavigateAsync(page.Name, parameters: parameters, useModalNavigation: isModal,isAnimated);
+                var result = await NavigationService?.NavigateAsync(page.Name, parameters: parameters, useModalNavigation: isModal, isAnimated);
                 if (!result.Success)
                 {
-                    App.LogException(result.Exception);
+                    HandleNavigationResult(result);
                 }
                 IsClicked = false;
             }
+        }
+        protected void HandleNavigationResult(INavigationResult result)
+        {
+            if (!result.Success)
+            {
+                switch (result.Exception)
+                {
+                    case ContainerResolutionException crException:
+                        HandleContainerException(crException);
+                        break;
+                    case NavigationException ne when ne.InnerException is ContainerResolutionException cre:
+                        HandleContainerException(cre);
+                        break;
+                    case NavigationException ne:
+                        //HandleNavigationException(ne);
+                        App.LogException(ne);
+                        break;
+                    default:
+                        // Report a bug to the Prism Team
+                        App.LogException(result.Exception);
+                        break;
+                }
+            }
+        }
+
+        private void HandleContainerException(ContainerResolutionException cre)
+        {
+            // NOTE: This is not a cheap function to execute... This will recurse dependencies...
+            // Multiple exceptions may be thrown and caught
+#if DEBUG
+            // returns IDictionary<Type, Exception>
+            var errors = cre.GetErrors();
+            errors.ForEach((keyPair) =>
+            {
+                var type = keyPair.Key;
+                var ex = keyPair.Value;
+                App.Log($"Could not resolve {type.Name}.\n{ex.GetType()} - {ex.Message}");
+
+            });
+#endif
         }
 
         public async void NavigateTo(Type page, INavigationParameters parameters = null, bool isModal = false)
@@ -102,10 +128,11 @@ namespace XamProjectTemplate.ViewModels
             {
                 IsClicked = true;
                 App.Log($"Navigate To: {path}");
-                var result = await NavigationService?.NavigateAsync(path, parameters, useModalNavigation: isModal,isAnimated);
+                var result = await NavigationService?.NavigateAsync(path, parameters, useModalNavigation: isModal, isAnimated);
                 if (!result.Success)
                 {
-                    App.LogException(result.Exception);
+                    //App.LogException(result.Exception);
+                    HandleNavigationResult(result);
                 }
                 IsClicked = false;
             }
@@ -117,10 +144,11 @@ namespace XamProjectTemplate.ViewModels
             {
                 IsClicked = true;
                 App.Log($"Go Back ");
-                var result = await NavigationService?.GoBackAsync(parameters, useModalNavigation: isModal,isAnimated);
+                var result = await NavigationService?.GoBackAsync(parameters, useModalNavigation: isModal, isAnimated);
                 if (!result.Success)
                 {
-                    App.LogException(result.Exception);
+                    //App.LogException(result.Exception);
+                    HandleNavigationResult(result);
                 }
                 IsClicked = false;
             }
@@ -138,7 +166,7 @@ namespace XamProjectTemplate.ViewModels
 
         public async Task DisplayAlertAsync(string title, string message, string cancelButton)
         {
-            await DisplayAlertAsync(title, message ,null, cancelButton);
+            await DisplayAlertAsync(title, message, null, cancelButton);
         }
 
         public async void DisplayAlert(string title, string message, string cancelButton)
