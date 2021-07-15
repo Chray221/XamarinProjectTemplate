@@ -26,4 +26,36 @@
     <Folder Include="Views\CustomViews\" />
     <Folder Include="Resources\SVG\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Fonts\FontAwesome5BrandsRegular.otf" />
+    <None Remove="Resources\Fonts\Gilroy-Medium.ttf" />
+    <None Remove="Resources\Fonts\FontAwesome5Solid.otf" />
+    <None Remove="Resources\Fonts\NexaRegular.otf" />
+    <None Remove="Resources\Fonts\FontAwesome5Regular.otf" />
+    <None Remove="Resources\Fonts\Helvetica.ttf" />
+    <None Remove="Resources\Fonts\Gilroy-Regular.ttf" />
+    <None Remove="Resources\Fonts\FontAwesome.ttf" />
+    <None Remove="Resources\Fonts\Gilroy-ExtraBold.ttf" />
+    <None Remove="Resources\Fonts\Gilroy-Light.ttf" />
+    <None Remove="Resources\Fonts\Pacifico.ttf" />
+    <None Remove="Resources\Fonts\Helvetica-Bold.ttf" />
+    <None Remove="Resources\Fonts\Gilroy-Bold.ttf" />
+    <None Remove="Resources\Fonts\Helvetica46LightItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\FontAwesome5BrandsRegular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\Gilroy-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FontAwesome5Solid.otf" />
+    <EmbeddedResource Include="Resources\Fonts\NexaRegular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FontAwesome5Regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\Helvetica.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Gilroy-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\FontAwesome.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Gilroy-ExtraBold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Gilroy-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Pacifico.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Helvetica-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Gilroy-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Helvetica46LightItalic.ttf" />
+  </ItemGroup>
 </Project>

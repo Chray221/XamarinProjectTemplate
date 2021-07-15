@@ -6,7 +6,7 @@ namespace XamProjectTemplate.Extension
 {
     public static class PhoneNumberExtension
 	{
-        public static bool IsNumber(this string phoneEntry)
+        public static bool IsPhoneNumber(this string phoneEntry)
         {
             return ToPhoneNumber(phoneEntry).Length < 13;
         }

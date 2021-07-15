@@ -4,121 +4,159 @@
              x:Class="XamProjectTemplate.MainPage"
              xmlns:local="clr-namespace:XamProjectTemplate"
              xmlns:res="clr-namespace:XamProjectTemplate.Resources">
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Button
-            Text="Try me again...!"
-            FontSize="{local:ScaleFontSize Value=15}"
-            TextColor="{Static res:ColorResource.MAIN_THEME_COLOR}"
-            Background="{local:SolidColorBrush Value={Static res:ColorResource.MAIN_BUTTON_COLOR}}"
-            CornerRadius="{local:ScaleHeight Value=50}"
-            Padding="{local:ScaleThickness Value='15,5'}"
-            HorizontalOptions="Center"/>
-            
-            <!--<Editor
-                Text="Editor Here!....."
-                WidthRequest="{local:ScaleWidth Value=150}"
-                HeightRequest="{local:ScaleHeight Value=100}"
-                HorizontalOptions="Center"
+    <ScrollView>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
+            <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+            <Label FontSize="16" Padding="30,24,30,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Learn more at "/>
+                            <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button
+                Text="Try me again...!"
                 FontSize="{local:ScaleFontSize Value=15}"
-                Background="{local:SolidColorBrush Value=LightCyan}"
-                IsVisible="true"
-                >
-                <Editor.Clip>
+                TextColor="{Static res:ColorResource.MAIN_THEME_COLOR}"
+                Background="{local:SolidColorBrush Value={Static res:ColorResource.MAIN_BUTTON_COLOR}}"
+                CornerRadius="{local:ScaleHeight Value=50}"
+                Padding="{local:ScaleThickness Value='15,5'}"
+                HorizontalOptions="Center">
+                <!--<Button.Clip>
                     <RoundRectangleGeometry
-                        CornerRadius="{local:ScaleCornerRadius Value=20}"
-                        Rect="0,0,150,100">
-                    </RoundRectangleGeometry>
-                </Editor.Clip>
-            </Editor>-->
-        <Frame
-            WidthRequest="{local:ScaleWidth Value=150}"
-            HeightRequest="{local:ScaleHeight Value=100}"
-            CornerRadius="{local:ScaleHeight Value=25}"
-            HorizontalOptions="Center"
-            HasShadow="False"
-            Padding="0"
-            Background="{local:SolidColorBrush Value=Gainsboro}">
-            <Editor
-                x:Name="editor"
-                Text="1+1"
-                WidthRequest="{local:ScaleWidth Value=150}"
-                HeightRequest="{local:ScaleHeight Value=100}"
+                        Rect="25,75,150,50"
+                        CornerRadius="{local:ScaleCornerRadius Value=25}"/>
+                </Button.Clip>-->
+            </Button>
+            
+                <!--<Editor
+                    Text="Editor Here!....."
+                    WidthRequest="{local:ScaleWidth Value=150}"
+                    HeightRequest="{local:ScaleHeight Value=100}"
+                    HorizontalOptions="Center"
+                    FontSize="{local:ScaleFontSize Value=15}"
+                    Background="{local:SolidColorBrush Value=LightCyan}"
+                    IsVisible="true"
+                    >
+                    <Editor.Clip>
+                        <RoundRectangleGeometry
+                            CornerRadius="{local:ScaleCornerRadius Value=20}"
+                            Rect="0,0,150,100">
+                        </RoundRectangleGeometry>
+                    </Editor.Clip>
+                </Editor>-->
+            <Frame
+                CornerRadius="{local:ScaleHeight Value=25}"
                 HorizontalOptions="Center"
-                FontSize="{local:ScaleFontSize Value=15}"
-                Background="{local:SolidColorBrush Value=LightCyan}"
-                IsVisible="true"/>
-        </Frame>
-        <Slider
-            x:Name="slider"
-            HorizontalOptions="Fill" />
-        <Label >
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span
-                        Text="(5 * 2 + 1) * 15 * "
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text="{Binding Source={Reference slider},Path=Value}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text=" = "
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text="{local:CalcBinding 'asdfg', Source={Reference slider},Path=Value,Calculation='(5 * 2 + 1) * 15 * {0}'}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label >
-            <Label.FormattedText>
-                <FormattedString>                    
-                    <Span
-                        Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='{0}*100'}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text="% from 15-100"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text=" = "
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='({0}*(100-15))+15'}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+                HasShadow="False"
+                Padding="{local:ScaleThickness Value='10,5'}"
+                Background="{local:SolidColorBrush Value=Gainsboro}">
+                <local:CustomEntry
+                    x:Name="editor"
+                    Text="1+1"
+                    WidthRequest="{local:ScaleWidth Value=150}"
+                    HeightRequest="{local:ScaleHeight Value=50}"
+                    HorizontalOptions="Center"
+                    FontSize="{local:ScaleFontSize Value=15}"
+                    FontAttributes="Bold"
+                    TextColor="{AppThemeBinding Dark=Black,Light=White,Default=Black}"
+                    IsVisible="true"
+                    Keyboard="Text"/>
+            </Frame>
+            <Slider
+                x:Name="slider"
+                HorizontalOptions="Fill" />
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="(5 * 2 + 1) * 15 * "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{Binding Source={Reference slider},Path=Value}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{local:CalcBinding 'asdfg', Source={Reference slider},Path=Value,Calculation='(5 * 2 + 1) * 15 * {0}'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>                    
+                        <Span
+                            Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='{0}*100'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="% from 15-100"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='({0}*(100-15))+15'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
 
-        <Label >
-            <Label.FormattedText>
-                <FormattedString>                    
-                    <Span
-                        Text="{Binding Source={Reference editor},Path=Text}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text=" = "
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                    <Span
-                        Text="{local:CalcBinding Source={Reference editor},Path=Text,Calculation='{0}'}"
-                        FontSize="{local:ScaleFontSize Value=19}"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        
-    </StackLayout>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>                    
+                        <Span
+                            Text="{Binding Source={Reference editor},Path=Text}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{local:CalcBinding Source={Reference editor},Path=Text,Calculation='{0}'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>                    
+                        <Span
+                            Text="{Binding Source={Reference editor},Path=Text}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" * "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{Binding Source={Reference slider},Path=Value}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            FontSize="{local:ScaleFontSize Value=19}">
+                            <Span.Text>
+                                <MultiBinding Converter="{local:CalcMultiBindingConverter Calculation='{0} * {1}' }">
+                                    <Binding
+                                        Path="Text"
+                                        Source="{Reference editor}"/>
+                                    <Binding
+                                        Path="Value"
+                                        Source="{Reference slider}"/>
+                                </MultiBinding>
+                            </Span.Text>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>        
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>

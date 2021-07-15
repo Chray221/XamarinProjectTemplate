@@ -11,6 +11,7 @@ using Prism.Navigation;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamProjectTemplate.Views;
 
 namespace XamProjectTemplate
 {
@@ -76,7 +77,8 @@ namespace XamProjectTemplate
 
         async void ForTesting()
         {
-            var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(XamProjectTemplate.MainPage)}");
+            var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(CalculatorPage)}");
+            //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(XamProjectTemplate.MainPage)}");
             //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MyFlyoutMenuPage)}");
             if (!result.Success)
             {
@@ -218,6 +220,7 @@ namespace XamProjectTemplate
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<CalculatorPage>();
         }
     }
 }

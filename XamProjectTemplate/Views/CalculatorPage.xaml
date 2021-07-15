@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamProjectTemplate.Views.CalculatorPage"
+    xmlns:local="clr-namespace:XamProjectTemplate"
+    xmlns:views="clr-namespace:XamProjectTemplate.Views"
+    xmlns:res="clr-namespace:XamProjectTemplate.Resources"
+    BindingContext="{Binding Source={RelativeSource Self}}"
+    Title="Calculator">
+    <NavigationPage.TitleView>
+        <Label
+            Text="Calculator"
+            TextColor="White"
+            FontSize="{local:ScaleFontSize Value=20}"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self},Path=Text}"/>
+                <Setter Property="Command" Value="{Binding ButtonCommand}"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="Background" Value="{local:SolidColorBrush Value=LightGray}"/>
+                <Setter Property="FontSize" Value="{local:ScaleFontSize Value=30}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid
+        ColumnDefinitions="*,*,*,*"
+        RowDefinitions="{local:ScaleRowDefinition Value='*,50,60,60,60,60,60'}">
+        <CollectionView
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
+            ItemsSource="{Binding CalculationHistory}"
+            VerticalOptions="EndAndExpand"
+            SelectionChanged="CalcuationHistoryCollectionView_SelectionChanged"
+            SelectionMode="Single"
+            x:Name="CalcuationHistoryCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        TextColor="Black"
+                        FontSize="{local:ScaleFontSize Value=20}"
+                        HorizontalTextAlignment="End"
+                        VerticalTextAlignment="Center"
+                        HeightRequest="{local:ScaleHeight Value=50}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding .}"
+                                    TextColor="Black"
+                                    FontSize="{local:ScaleFontSize Value=20}"/>
+                                <Span
+                                    Text=" = "
+                                    TextColor="Black"
+                                    FontSize="{local:ScaleFontSize Value=20}"/>
+                                <Span
+                                    Text="{local:CalcBinding Path='.',Calculation='{0}'}"
+                                    TextColor="Black"
+                                    FontSize="{local:ScaleFontSize Value=20}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label
+            Grid.Row="1"
+            Grid.ColumnSpan="4"
+            x:Name="EntryLabel"
+            Text=""
+            Padding="{local:ScaleThickness Value='15,0'}"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"
+            FontSize="{local:ScaleFontSize Value=30}"
+            TextColor="Black"/>
+
+        <Button 
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="C"
+            Background="{local:SolidColorBrush Value=Orange}"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="*"
+             Style="{StaticResource buttonStyle}"/>
+        <Button 
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="/"
+             Style="{StaticResource buttonStyle}"/>
+        <Button 
+            Grid.Row="2"
+            Grid.Column="3"
+            Text="arrow-left"
+            FontFamily="{Static res:FontResource.FONTAWESOME5_SOLID}"
+             Style="{StaticResource buttonStyle}"
+            />
+
+        <Button 
+            Grid.Row="3"
+            Grid.Column="0"
+            Text="7"
+            FontFamily="{Static res:FontResource.FONTAWESOME5_SOLID}"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="8"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="3"
+            Grid.Column="2"
+            Text="9"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="3"
+            Grid.Column="3"
+            Text="+"
+             Style="{StaticResource buttonStyle}"/>
+
+        <Button 
+            Grid.Row="4"
+            Grid.Column="0"
+            Text="4"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="4"
+            Grid.Column="1"
+            Text="5"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="4"
+            Grid.Column="2"
+            Text="6"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="4"
+            Grid.Column="3"
+            Text="-"
+             Style="{StaticResource buttonStyle}"/>
+
+        <Button 
+            Grid.Row="5"
+            Grid.Column="0"
+            Text="1"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="5"
+            Grid.Column="1"
+            Text="2"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="5"
+            Grid.Column="2"
+            Text="3"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+            Grid.Row="5"
+            Grid.Column="3"
+            Text="*"
+             Style="{StaticResource buttonStyle}"/>
+
+        <Button 
+             Grid.Row="6"
+             Grid.ColumnSpan="2"
+             Text="0"
+             Style="{StaticResource buttonStyle}"/>
+         <Button 
+             Grid.Row="6"
+             Grid.Column="2"
+             Text="."
+             Style="{StaticResource buttonStyle}"/>
+         <Button
+             Grid.Row="5"
+             Grid.RowSpan="2"
+             Grid.Column="3"
+             Text="="
+             Background="{local:SolidColorBrush Value=LightSlateGray}"
+             Style="{StaticResource buttonStyle}"/>
+    </Grid>
+</ContentPage>

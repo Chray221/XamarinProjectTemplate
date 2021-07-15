@@ -53,6 +53,7 @@ namespace XamProjectTemplate
 
         public class CalcBindingConverter : IValueConverter
         {
+            public string Calculation { get; set; } = "{0}";
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
             {
                 App.Log($"BINDING CALC TARGET TYPE: {targetType}");
@@ -72,25 +73,28 @@ namespace XamProjectTemplate
                 throw new NotImplementedException();
             }
         }
+    }
 
-        public class BoolValues
+    public class CalcMultiBindingConverter : IMultiValueConverter
+    {
+        public string Calculation { get; set; } = "{0}";
+
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            public object True { get; set; }
-            public object False { get; set; }
-            public string Condition { get; set; }
-            public string StringFormat { get; set; }
+            App.Log($"BINDING CALC TARGET TYPE: {targetType}");
+            List<(string, object)> parameters = new List<(string, object)>();
+            for(int index = 0; index < values.Length; index++)
+            {
+                parameters.Add( ("{" + index + "}", values[index]) );
+            }
+            return Calculation.Compute(targetType, parameters.ToArray());
+
+            //return Activator.CreateInstance(targetType);
         }
 
-
-
-        public class BoolValues<T>
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            public BoolValues(T type)
-            {
-
-            }
-            public T True { get; set; }
-            public T False { get; set; }
+            throw new NotImplementedException();
         }
     }
 }
