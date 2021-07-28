@@ -29,11 +29,13 @@
                 CornerRadius="{local:ScaleHeight Value=50}"
                 Padding="{local:ScaleThickness Value='15,5'}"
                 HorizontalOptions="Center">
-                <!--<Button.Clip>
+                <Button.Clip>
                     <RoundRectangleGeometry
-                        Rect="25,75,150,50"
+
+                        Rect="0,25,150,25"
+                        FillRule="Nonzero"
                         CornerRadius="{local:ScaleCornerRadius Value=25}"/>
-                </Button.Clip>-->
+                </Button.Clip>
             </Button>
             
                 <!--<Editor

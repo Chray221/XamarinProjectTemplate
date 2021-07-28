@@ -18,10 +18,10 @@ namespace XamProjectTemplate.Droid.Renderers
 
         }
 
-        protected override void OnDraw(Android.Graphics.Canvas canvas)
-        {
-            base.OnDraw(canvas);
-        }
+        //protected override void OnDraw(Android.Graphics.Canvas canvas)
+        //{
+        //    base.OnDraw(canvas);
+        //}
 
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
