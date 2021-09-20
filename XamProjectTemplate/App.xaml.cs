@@ -77,8 +77,8 @@ namespace XamProjectTemplate
 
         async void ForTesting()
         {
-            var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(CalculatorPage)}");
-            //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(XamProjectTemplate.MainPage)}");
+            //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(CalculatorPage)}");
+            var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(XamProjectTemplate.MainPage)}");
             //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MyFlyoutMenuPage)}");
             if (!result.Success)
             {

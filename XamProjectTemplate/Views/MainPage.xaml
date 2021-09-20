@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamProjectTemplate.MainPage"
              xmlns:local="clr-namespace:XamProjectTemplate"
-             xmlns:res="clr-namespace:XamProjectTemplate.Resources">
+             xmlns:res="clr-namespace:XamProjectTemplate.Resources"
+             xmlns:prism="http://prismlibrary.com">
     <ScrollView>
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -142,7 +143,7 @@
                             FontSize="{local:ScaleFontSize Value=19}"/>
                         <Span
                             FontSize="{local:ScaleFontSize Value=19}">
-                            <Span.Text>
+                            <Span.Text>                                
                                 <MultiBinding Converter="{local:CalcMultiBindingConverter Calculation='{0} * {1}' }">
                                     <Binding
                                         Path="Text"
@@ -155,7 +156,25 @@
                         </Span>
                     </FormattedString>
                 </Label.FormattedText>
-            </Label>        
+            </Label>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>                    
+                        <Span
+                            Text="{Binding Source={Reference editor},Path=Text,StringFormat='{0} > 100'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{local:BindingBoolValues Source={Reference editor}, Path=Text, Condition='{0} > 100',True='True', False='False'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button
+                Text="To Calculator"
+                Command="{prism:NavigateTo Name='CalculatorPage'}"/>
         </StackLayout>
     </ScrollView>
 

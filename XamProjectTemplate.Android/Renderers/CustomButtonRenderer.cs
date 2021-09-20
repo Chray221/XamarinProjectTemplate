@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Views;
 using Android.Content;
-using Xamarin.Forms.Platform.Android.AppCompat;
+//using Xamarin.Forms.Platform.Android.AppCompat;
 //using Xamarin.Forms.Platform.Android.FastRenderers;
 using System.ComponentModel;
 

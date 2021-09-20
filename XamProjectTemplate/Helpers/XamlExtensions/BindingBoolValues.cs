@@ -11,6 +11,7 @@ namespace XamProjectTemplate
     public class BindingBoolValues : IMarkupExtension<BindingBase>
     {
         public string Path { get; set; }
+        public object Source { get; set; }
         public string StringFormat { get; set; } = null;
         public string Condition { get; set; } = null;
         public object True { get; set; }
@@ -30,6 +31,23 @@ namespace XamProjectTemplate
             //    else if (provideValueTarget.TargetProperty is BindableProperty bindableProperty)
             //        property = bindableProperty.ReturnType;
             //}
+
+            if (Source != null)
+                return new Binding
+                {
+                    Path = Path,
+                    Source = Source,
+                    StringFormat = StringFormat,
+                    Mode = BindingMode.OneWay,
+                    Converter = new BindingBoolValuesConverter(),
+                    ConverterParameter = new BoolValues()
+                    {
+                        True = True,
+                        False = False,
+                        Condition = Condition,
+                        StringFormat = StringFormat
+                    }
+                };
             return new Binding
             {
                 Path = Path,
@@ -116,8 +134,17 @@ namespace XamProjectTemplate
         // to be amended with necessary transforms
         private static readonly (string old, string @new)[] tokens = new[] { ("&&", "AND"), ("||", "OR") };
 
-        public static T Compute<T>(this string expression, params (string name, object value)[] arguments) =>
-            (T)Convert.ChangeType(expression.Transform().GetResult(arguments), typeof(T));
+        public static T Compute<T>(this string expression, params (string name, object value)[] arguments)
+        {
+            try
+            {
+                return (T)Convert.ChangeType(expression.Transform().GetResult(arguments), typeof(T));
+            }
+            catch
+            {
+                return default;
+            }
+        }
         public static object Compute(this string expression, Type type, params (string name, object value)[] arguments) =>
             Convert.ChangeType(expression.Transform().GetResult(arguments), type);
 

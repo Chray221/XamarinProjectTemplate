@@ -24,7 +24,7 @@ namespace XamProjectTemplate.Views
 
         private void Execute_ButtonCommand(object obj)
         {
-            Vibration.Vibrate(250);
+            //Vibration.Vibrate(250);
             if (obj is string inputKey)
             {
                 switch (inputKey)

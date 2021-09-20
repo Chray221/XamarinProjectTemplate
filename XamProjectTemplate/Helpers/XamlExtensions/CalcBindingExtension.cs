@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,6 @@ namespace XamProjectTemplate
         public string Path { get; set; }
         public object Source { get; set; } = null;
         public string Calculation { get; set; } = null;
-        public List<string> Testings { get; set; }
         public CalcBindingExtension()
         {
         }
@@ -28,7 +28,8 @@ namespace XamProjectTemplate
             //    else if (provideValueTarget.TargetProperty is BindableProperty bindableProperty)
             //        property = bindableProperty.ReturnType;
             //}
-            if(Source == null)
+
+            if (Source == null)
                 return new Binding
                 {
                     Path = Path,
@@ -83,9 +84,9 @@ namespace XamProjectTemplate
         {
             App.Log($"BINDING CALC TARGET TYPE: {targetType}");
             List<(string, object)> parameters = new List<(string, object)>();
-            for(int index = 0; index < values.Length; index++)
+            for (int index = 0; index < values.Length; index++)
             {
-                parameters.Add( ("{" + index + "}", values[index]) );
+                parameters.Add(("{" + index + "}", values[index]));
             }
             return Calculation.Compute(targetType, parameters.ToArray());
 
@@ -97,4 +98,6 @@ namespace XamProjectTemplate
             throw new NotImplementedException();
         }
     }
+
+
 }

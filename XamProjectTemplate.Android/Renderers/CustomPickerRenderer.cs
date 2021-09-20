@@ -3,7 +3,7 @@ using Android.Content;
 using XamProjectTemplate.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Platform.Android.AppCompat;
+//using Xamarin.Forms.Platform.Android.AppCompat;
 
 [assembly: ExportRenderer(typeof(Picker), typeof(CustomPickerRenderer))]
 namespace XamProjectTemplate.Droid.Renderers
