@@ -94,7 +94,10 @@
             </Label>
             <Label >
                 <Label.FormattedText>
-                    <FormattedString>                    
+                    <FormattedString>    
+                        <Span
+                            Text="&#10;FROM PERCENTAGE&#10;"
+                            FontSize="{local:ScaleFontSize Value=19}"/>                
                         <Span
                             Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='{0}*100'}"
                             FontSize="{local:ScaleFontSize Value=19}"/>
@@ -106,6 +109,27 @@
                             FontSize="{local:ScaleFontSize Value=19}"/>
                         <Span
                             Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='({0}*(100-15))+15'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label >
+                <Label.FormattedText>
+                    <FormattedString>                 
+                        <Span
+                            Text="&#10;TO PERCENTAGE&#10;"
+                            FontSize="{local:ScaleFontSize Value=19}"/>    
+                        <Span
+                            Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='{0}*100'}"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="% from 15-100"
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text=" = "
+                            FontSize="{local:ScaleFontSize Value=19}"/>
+                        <Span
+                            Text="{local:CalcBinding Source={Reference slider},Path=Value,Calculation='(({0}*(100-15))/(100-15))*100'}"
                             FontSize="{local:ScaleFontSize Value=19}"/>
                     </FormattedString>
                 </Label.FormattedText>
