@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Frame
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    x:Class="XamProjectTemplate.ComboBox"
     xmlns:local="clr-namespace:XamProjectTemplate"
-    x:Class="XamProjectTemplate.ComboBox">
+    xmlns:res="clr-namespace:XamProjectTemplate.Resources">
     <Frame.Resources>
         <ResourceDictionary>            
             <Style TargetType="Label" x:Key="choiceValueLabelStyle">

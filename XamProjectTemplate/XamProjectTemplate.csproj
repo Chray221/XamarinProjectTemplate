@@ -26,6 +26,7 @@
     <Folder Include="Views\" />
     <Folder Include="Views\CustomViews\" />
     <Folder Include="Resources\SVG\" />
+    <Folder Include="Views\CustomViews\ComboBox\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\FontAwesome5BrandsRegular.otf" />
