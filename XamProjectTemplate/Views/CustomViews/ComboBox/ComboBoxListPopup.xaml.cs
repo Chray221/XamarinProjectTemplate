@@ -127,11 +127,14 @@ namespace XamProjectTemplate
                     else
                         marginTop = Constants.NAVIGATION_HEIGHT + App.StatusBarHeight;
                 }
-                else */if (parent is PopupPage page)
+                else */
+                if (parent is PopupPage page)
                 {
                     if (Device.RuntimePlatform == Device.Android) // ¯\_(ツ)_/¯
                         marginTop = -page.SystemPadding.Top;
                 }
+                else if (parent is ScrollView scrollView)
+                    y -= scrollView.ScrollY;
                 parent = (parent.Parent as VisualElement);
             }
 

@@ -6,20 +6,30 @@
     xmlns:cv="clr-namespace:XamProjectTemplate.Views.CustomViews"
     xmlns:local="clr-namespace:XamProjectTemplate"
     xmlns:res="clr-namespace:XamProjectTemplate.Resources"
-                   CloseWhenBackgroundIsClicked="True"
-                   BackgroundColor="{Static res:ColorResource.LOADING_BACKGROUNDCOLOR}"
-                   x:Name="parentPopupPage" >
+    CloseWhenBackgroundIsClicked="True"
+    BackgroundColor="{Static res:ColorResource.LOADING_BACKGROUNDCOLOR}"
+    x:Name="parentPopupPage"
+    xmlns:animation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup">
     <cv:RGPopupPage.HasSystemPadding>
         <OnPlatform x:TypeArguments="x:Boolean" Android="True" iOS="False"/>
     </cv:RGPopupPage.HasSystemPadding>
-    <!--
-    xmlns:animation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    <local:RGPopupPage.Animation>
+    
+    <!--xmlns:animation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"-->
+    <cv:RGPopupPage.Animation>
+        <!--<animation:ScaleAnimation
+            DurationIn="250"
+            DurationOut="250"
+            EasingIn="CubicInOut"
+            EasingOut="CubicInOut"
+            PositionIn="Center"
+            PositionOut="Center"/>-->
         <animation:FadeAnimation DurationIn="250"
                                  DurationOut="250"
                                  EasingIn="CubicInOut"
-                                 EasingOut="CubicInOut"/>
-    </local:RGPopupPage.Animation>-->
+                                 EasingOut="CubicInOut"
+                                 HasBackgroundAnimation="True"
+                                 />
+    </cv:RGPopupPage.Animation>
     <Frame x:Name="mainView" CornerRadius="0" Padding="0" 
                      HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"
                      BackgroundColor="{Static res:ColorResource.MAIN_WHITE_COLOR}"
@@ -48,7 +58,11 @@
                                     </Label.GestureRecognizers>
                                 </Label>
                             </ScrollView>
-                            <BoxView Style="{StaticResource SeparatorBoxViewStyle}" />
+                            <BoxView
+                                HeightRequest="{local:ScaleHeight Value=1}"
+                                Color="{Static res:ColorResource.BORDER_COLOR}"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

@@ -82,7 +82,7 @@ namespace XamProjectTemplate
             //var result = await NavigationService?.NavigateAsync($"{nameof(NavigationPage)}/{nameof(MyFlyoutMenuPage)}");
             if (!result.Success)
             {
-                App.LogException(result.Exception);
+                App.HandleNavigationResult(result);
             }
 
             //var ViewModel = new LabelPageViewModel(NavigationService,new PageDialogService(new ApplicationProvider()));
@@ -111,7 +111,7 @@ namespace XamProjectTemplate
             var result = await _NavigationService.NavigateAsync($"{AppNavigationRootRoute}{nameof(MainPage)}");
             if (!result.Success)
             {
-                App.LogException(result.Exception);
+                App.HandleNavigationResult(result);
             }
         }
 
@@ -120,7 +120,7 @@ namespace XamProjectTemplate
             var result = await _NavigationService?.NavigateAsync($"{AppNavigationRootRoute}{nameof(NavigationPage)}/{nameof(XamProjectTemplate.MainPage)}");
             if (!result.Success)
             {
-                App.LogException(result.Exception);
+                App.HandleNavigationResult(result);
             }
         }
 
@@ -214,6 +214,41 @@ namespace XamProjectTemplate
 #else
             Console.WriteLine(message);
 #endif
+        }
+
+        public static void HandleNavigationResult(INavigationResult result)
+        {
+            if (!result.Success)
+            {
+                //using Prism;
+                //using Prism.DryIoc;
+                //using Prism.Ioc;
+
+                switch (result.Exception)
+                {
+                    //use in prism 8
+                    case ContainerResolutionException crException:
+                        HandleContainerException(crException);
+                        break;
+                    case NavigationException ne when ne.InnerException is ContainerResolutionException cre:
+                        HandleContainerException(cre);
+                        break;
+                    case NavigationException ne:
+                        //HandleNavigationException(ne);
+                        App.LogException(ne);
+                        break;
+                    default:
+                        // Report a bug to the Prism Team
+                        App.LogException(result.Exception);
+                        break;
+                }
+            }
+        }
+
+        public static void HandleContainerException(ContainerResolutionException crException)
+        {
+            //crException.ServiceName
+            Log($"{crException.ServiceName}|{crException.ServiceType}|{crException.StackTrace}|{crException.Message}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

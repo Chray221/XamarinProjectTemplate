@@ -4,13 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
     x:Class="XamProjectTemplate.ComboBox"
     xmlns:local="clr-namespace:XamProjectTemplate"
-    xmlns:res="clr-namespace:XamProjectTemplate.Resources">
+    xmlns:res="clr-namespace:XamProjectTemplate.Resources"
+    x:Name="borderParentView"
+    HasShadow="False">
     <Frame.Resources>
         <ResourceDictionary>            
             <Style TargetType="Label" x:Key="choiceValueLabelStyle">
-                <Setter Property="TextColor" Value="{Static res:ColorResource.MAIN_BLACK_COLOR}"/>
-                <Setter Property="FontFamily" Value="{Static res:FontResource.REGULAR}"/>
-                 <Setter Property="FontSize" Value="{local:ScaleFontSize Value=14}"/>
                  <Setter Property="HorizontalOptions" Value="Fill"/>
                  <Setter Property="VerticalOptions" Value="Fill"/>
                  <Setter Property="VerticalTextAlignment" Value="Center"/>
@@ -22,10 +21,10 @@
                 <Setter Property="TextColor" Value="{Binding Source={Reference borderParentView},Path=TextColor}"/>
             </Style>
             <Style TargetType="Button" x:Key="choiceValueCloseButtonStyle">
-                 <Setter Property="Text" Value="x"/>
+                 <Setter Property="Text" Value="times"/>
                  <Setter Property="TextColor" Value="{Static res:ColorResource.MAIN_BLACK_COLOR}"/>
                  <Setter Property="FontFamily" Value="{Static res:FontResource.FONTAWESOME5_SOLID}"/>
-                <Setter Property="FontFamily" Value="{Static res:FontResource.BOLD}"/>
+                <!--<Setter Property="FontFamily" Value="{Static res:FontResource.BOLD}"/>-->
                  <Setter Property="FontSize" Value="{local:ScaleFontSize Value=20}"/>
                  <Setter Property="HorizontalOptions" Value="End"/>
                  <Setter Property="VerticalOptions" Value="Fill"/>
@@ -51,20 +50,20 @@
             </ContentView>
         </ScrollView>  
         <Label x:Name="reasonPlaceHolder"
-                Text="{Binding Source={Reference borderParentView},Path=PlaceholderText}" 
-                FontSize="{Binding Source={Reference borderParentView},Path=PlaceholderFontSize}"
-                FontFamily="{Binding Source={Reference borderParentView},Path=PlaceholderFontFamily}"
-                TextColor="{Binding Source={Reference borderParentView},Path=PlaceholderColor}"
-                HorizontalTextAlignment="Start"
-                HorizontalOptions="Center"
-                VerticalTextAlignment="Center"
-                BackgroundColor="Transparent"
-                Margin="{local:ScaleThickness Value='0,0,0,0'}"
-                InputTransparent="True"
-                >
+               Text="{Binding Source={Reference borderParentView},Path=PlaceholderText}" 
+               FontSize="{Binding Source={Reference borderParentView},Path=PlaceholderFontSize}"
+               FontFamily="{Binding Source={Reference borderParentView},Path=PlaceholderFontFamily}"
+               TextColor="{Binding Source={Reference borderParentView},Path=PlaceholderColor}"
+               HorizontalTextAlignment="Start"
+               HorizontalOptions="Center"
+               VerticalTextAlignment="Center"
+               BackgroundColor="Transparent"
+               Margin="{local:ScaleThickness Value='0,0,0,0'}"
+               IsVisible="false"
+               InputTransparent="True">
             <Label.Triggers>
                 <DataTrigger TargetType="Label" Binding="{Binding Source={Reference borderParentView},Path=Text}" Value="">
-                    <Setter Property="IsVisible" Value="false"/>
+                    <Setter Property="IsVisible" Value="true"/>
                 </DataTrigger>
             </Label.Triggers>
         </Label>              
@@ -83,11 +82,6 @@
                 ClassId="0"
                 FontFamily="{Static res:FontResource.FONTAWESOME5_SOLID}"
                 Style="{StaticResource choiceValueCloseButtonStyle}" >
-            <!--<Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding Source={Reference reasonsComboxValueLabel},Path=Text}" Value="">
-                    <Setter Property="IsVisible" Value="false"/>
-                </DataTrigger>
-            </Button.Triggers>-->
         </Button>
         
     </Grid>

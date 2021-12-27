@@ -4,7 +4,8 @@
              x:Class="XamProjectTemplate.MainPage"
              xmlns:local="clr-namespace:XamProjectTemplate"
              xmlns:res="clr-namespace:XamProjectTemplate.Resources"
-             xmlns:prism="http://prismlibrary.com">
+             xmlns:prism="http://prismlibrary.com"
+             NavigationPage.HasNavigationBar="False">
     <ScrollView>
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -22,6 +23,21 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+
+            <local:ComboBox
+                PlaceholderText="This is Combobox"
+                PlaceholderColor="Blue"
+                IsMultipleSelect="True"
+                HeightRequest="{local:ScaleHeightDouble Value=41}">
+                <local:ComboBox.ItemSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>thisisit</x:String>
+                        <x:String>thisisit2</x:String>
+                        <x:String>thisisit3</x:String>
+                        <x:String>thisisit4</x:String>
+                    </x:Array>
+                </local:ComboBox.ItemSource>
+            </local:ComboBox>
             <Button
                 Text="Try me again...!"
                 FontSize="{local:ScaleFontSize Value=15}"
