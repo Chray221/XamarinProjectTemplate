@@ -2,8 +2,97 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="XamProjectTemplate.Views.NavigationPage.MainNavigationPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+    x:Class="XamProjectTemplate.MainNavigationPage"
+    xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+    xmlns:local="clr-namespace:XamProjectTemplate"
+    xmlns:views="clr-namespace:XamProjectTemplate.Views"
+    xmlns:res="clr-namespace:XamProjectTemplate.Resources">
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid RowSpacing="0"
+                      ColumnSpacing="0"
+                      BackgroundColor="{Static res:ColorResource.MAIN_WHITE_COLOR}"
+                      Padding="{Static local:Constants.STATUSBAR_PADDING}"
+                      RowDefinitions="{local:ScaleRowDefinition Value='50,*'}"
+                      ColumnDefinitions="{local:ScaleColumnDefinition Value='52,*,60'}">
+                    <ContentPresenter Grid.Row="1"
+                                      Grid.ColumnSpan="3"/>
+                    <BoxView BackgroundColor="{Static res:ColorResource.MAIN_BLACK_COLOR}"
+                             Margin="{Static local:Constants.NEG_STATUSBAR_PADDING}"
+                             HeightRequest="{Static local:Constants.STATUS_BAR_HEIGHT}"
+                             Grid.ColumnSpan="3"
+                             VerticalOptions="Start"/>
+                    <Label Grid.ColumnSpan="3"
+                           Text="{TemplateBinding PageTitle}"
+                           FontFamily="{TemplateBinding TitleFontFamily}"
+                           FontSize="{TemplateBinding TitleFontSize}"
+                           TextColor="{TemplateBinding TitleTextColor}"
+                           BackgroundColor="{TemplateBinding NavigationBackgroundColor}"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Fill"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"/>
+                    <Button Grid.Column="0"
+                            ImageSource="{TemplateBinding LeftIcon}"
+                            Text="{TemplateBinding LeftText}"
+                            FontFamily="{TemplateBinding LeftTextFontFamily}"
+                            FontSize="{TemplateBinding LeftTextFontSize}"
+                            TextColor="{TemplateBinding LeftTextTextColor}"
+                            BackgroundColor="{TemplateBinding LeftButtonColor}"
+                            Command="{TemplateBinding LeftButtonCommand}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{TemplateBinding LeftIconType}"
+                                         Value="SVG">
+                                <Setter Property="ImageSource" Value="{Null}"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <local:FFSVGImage 
+                                      HeightRequest="{TemplateBinding LeftIconSize}"
+                                      Tint="{TemplateBinding LeftIconColor}"
+                                      HorizontalOptions="Fill"
+                                      VerticalOptions="Center"
+                                      InputTransparent="True">
+                        <local:FFSVGImage.Triggers>
+                            <DataTrigger TargetType="local:FFSVGImage"
+                                         Binding="{TemplateBinding LeftIconType}"
+                                         Value="SVG">
+                                <Setter Property="Source" Value="{TemplateBinding LeftIcon}"/>
+                            </DataTrigger>
+                        </local:FFSVGImage.Triggers>                        
+                    </local:FFSVGImage>
+                    <Button Grid.Column="2"
+                            ImageSource="{TemplateBinding RightIcon}"
+                            Text="{TemplateBinding RightText}"
+                            FontFamily="{TemplateBinding RightTextFontFamily}"
+                            FontSize="{TemplateBinding RightTextFontSize}"
+                            TextColor="{TemplateBinding RightTextTextColor}"
+                            BackgroundColor="{TemplateBinding RightButtonColor}"
+                            Command="{TemplateBinding RightButtonCommand}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{TemplateBinding RightIconType}"
+                                         Value="SVG">
+                                <Setter Property="ImageSource" Value="{Null}"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <local:FFSVGImage Grid.Column="2"
+                                      HeightRequest="{TemplateBinding RightIconSize}"
+                                      Tint="{TemplateBinding RightIconColor}"
+                                      HorizontalOptions="Fill"
+                                      VerticalOptions="Center"
+                                      InputTransparent="True">
+                        <local:FFSVGImage.Triggers>
+                            <DataTrigger TargetType="local:FFSVGImage"
+                                         Binding="{TemplateBinding RightIconType}"
+                                         Value="SVG">
+                                <Setter Property="Source" Value="{TemplateBinding RightIcon}"/>
+                            </DataTrigger>
+                        </local:FFSVGImage.Triggers>                        
+                    </local:FFSVGImage>
+                </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 </ContentPage>

@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamProjectTemplate.MainPage"
-             xmlns:local="clr-namespace:XamProjectTemplate"
-             xmlns:res="clr-namespace:XamProjectTemplate.Resources"
-             xmlns:prism="http://prismlibrary.com"
-             NavigationPage.HasNavigationBar="False">
+<local:MainNavigationPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="XamProjectTemplate.MainPage"
+    xmlns:local="clr-namespace:XamProjectTemplate"
+    xmlns:res="clr-namespace:XamProjectTemplate.Resources"
+    xmlns:prism="http://prismlibrary.com"
+    NavigationPage.HasNavigationBar="False"
+    PageTitle="Welcome to Xamarin.Forms!"
+    TitleTextColor="{Static res:ColorResource.MAIN_THEME_COLOR}">
     <ScrollView>
         <StackLayout>
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -194,4 +197,4 @@
         </StackLayout>
     </ScrollView>
 
-</ContentPage>
+</local:MainNavigationPage>

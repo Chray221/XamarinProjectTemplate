@@ -20,6 +20,11 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
@@ -27,6 +32,7 @@
     <Folder Include="Views\CustomViews\" />
     <Folder Include="Resources\SVG\" />
     <Folder Include="Views\CustomViews\ComboBox\" />
+    <Folder Include="Views\NavigationPage\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\FontAwesome5BrandsRegular.otf" />
