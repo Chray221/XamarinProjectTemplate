@@ -2,11 +2,11 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="XamProjectTemplate.MainNavigationPage"
-    xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+    x:Class="XamProjectTemplate.MainNavigationPage"    
     xmlns:local="clr-namespace:XamProjectTemplate"
     xmlns:views="clr-namespace:XamProjectTemplate.Views"
     xmlns:res="clr-namespace:XamProjectTemplate.Resources">
+    <!--xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"-->
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid RowSpacing="0"
