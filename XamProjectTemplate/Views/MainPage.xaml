@@ -48,7 +48,11 @@
                 Background="{local:SolidColorBrush Value={Static res:ColorResource.MAIN_BUTTON_COLOR}}"
                 CornerRadius="{local:ScaleHeight Value=50}"
                 Padding="{local:ScaleThickness Value='15,5'}"
-                HorizontalOptions="Center">
+                HorizontalOptions="Center"
+                Focused="Button_Focused"
+                Unfocused="Button_Focused"
+                Clicked="Button_Clicked"
+                PropertyChanged="Button_PropertyChanged">
                 <!--<Button.Clip>
                     <RoundRectangleGeometry
                         Rect="25,75,150,50"
@@ -80,6 +84,7 @@
                 Background="{local:SolidColorBrush Value=Gainsboro}">
                 <local:CustomEntry
                     x:Name="editor"
+                    IsReadOnly="True"
                     Text="1+1"
                     WidthRequest="{local:ScaleWidth Value=150}"
                     HeightRequest="{local:ScaleHeight Value=50}"
@@ -88,7 +93,9 @@
                     FontAttributes="Bold"
                     TextColor="{AppThemeBinding Dark=Black,Light=White,Default=Black}"
                     IsVisible="true"
-                    Keyboard="Text"/>
+                    Keyboard="Text"
+                    Focused="Button_Focused"
+                    Unfocused="Button_Focused"/>
             </Frame>
             <Slider
                 x:Name="slider"
@@ -191,6 +198,20 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            
+            <RadioButton                
+                Focused="Button_Focused"
+                Unfocused="Button_Focused"/>
+            <Picker                
+                Focused="Button_Focused"
+                Unfocused="Button_Focused"/>
+            <CheckBox                
+                Focused="Button_Focused"
+                Unfocused="Button_Focused"/>
+            <local:FocusButton
+                BackgroundColor="Red"
+                HeightRequest="50"
+                UnfocusedCommand="{Binding UnfocusedCommand}"/>
             <Button
                 Text="To Calculator"
                 Command="{prism:NavigateTo Name='CalculatorPage'}"/>

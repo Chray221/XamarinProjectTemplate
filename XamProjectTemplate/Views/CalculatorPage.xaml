@@ -84,7 +84,9 @@
             Grid.Column="0"
             Text="C"
             Background="{local:SolidColorBrush Value=Orange}"
-             Style="{StaticResource buttonStyle}"/>
+             Style="{StaticResource buttonStyle}"
+            Focused="Button_Focused"
+            Unfocused="Button_Unfocused"/>
          <Button 
             Grid.Row="2"
             Grid.Column="1"

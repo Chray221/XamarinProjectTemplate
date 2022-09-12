@@ -64,5 +64,15 @@ namespace XamProjectTemplate.Views
                 CalcuationHistoryCollectionView.SelectedItem = null;
             }
         }
+
+        void Button_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            App.Log("iOS Focused");
+        }
+
+        void Button_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            App.Log("iOS Unfocused");
+        }
     }
 }

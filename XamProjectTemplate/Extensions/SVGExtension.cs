@@ -28,4 +28,4 @@ namespace XamProjectTemplate.Helpers.Extentsions
         }
     }
 }
-TODO Add FFImageLoading plugin
+//TODO Add FFImageLoading plugin

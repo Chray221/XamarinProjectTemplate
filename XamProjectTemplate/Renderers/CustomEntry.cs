@@ -104,7 +104,7 @@ namespace XamProjectTemplate
 
         private void CustomEntry_Completed(object sender, EventArgs e)
         {
-           if(CanProceedToView)
+            if (CanProceedToView)
             {
                 NextView?.Focus();
             }
@@ -132,4 +132,5 @@ namespace XamProjectTemplate
         Default,
         OneTimeCode
     }
+
 }
